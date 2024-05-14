@@ -65,7 +65,7 @@
                                                         <li>
                                                             @if ($user->role == 'admin')
                                                                 <form
-                                                                    action="{{ route('user.grant-admin', $user->id) }}"
+                                                                    action="{{ route('user.release-admin', $user->id) }}"
                                                                     method="post">
                                                                     @csrf
                                                                     @method('put')

@@ -9,7 +9,6 @@
             <ul>
                 <li><a href="{{ route('dashboard') }}" wire:navigate>Dashboard</a></li>
                 <li><a href="{{ route('dashboard.berita') }}" wire:navigate>Berita</a></li>
-                <li><a href="{{ route('berita.list') }}" wire:navigate>List Berita</a></li>
                 <li>{{ $post->title }}</li>
             </ul>
         </div>

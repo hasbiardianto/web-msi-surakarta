@@ -27,8 +27,7 @@ Route::get('/auth/{provider}/callback', [SocialiteController::class, 'handleProv
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', isAdmin::class])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->name('berita.list');
-    Route::get('/dashboard/post', [DashboardController::class, 'index'])->name('dashboard.berita');
+    Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->name('dashboard.berita');
     Route::get('/dashboard/post/create', [DashboardController::class, 'add'])->name('berita.add');
     Route::get('/dashboard/post/preview', [DashboardController::class, 'preview'])->name('berita.preview');
     Route::get('/dashboard/post/{slug}', [DashboardController::class, 'view'])->name('berita.view');
@@ -40,4 +39,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::delete('/dashboard/message/{message}', [ContactUsController::class, 'destroy'])->name('pesan.delete');
     Route::get('/dashboard/users', [UserController::class, 'index'])->name('users.view');
     Route::put('/dashboard/user/{id}/grant-admin', [UserController::class, 'grantAdmin'])->name('user.grant-admin');
+    Route::put('/dashboard/user/{id}/release-admin', [UserController::class, 'releaseAdmin'])->name('user.release-admin');
 });

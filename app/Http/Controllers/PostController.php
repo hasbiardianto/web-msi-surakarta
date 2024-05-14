@@ -102,7 +102,7 @@ class PostController extends Controller
             ]);
         }
 
-        return redirect()->route('berita.list')->with('message', 'Postingan Berhasil Diubah!');
+        return redirect()->route('dashboard.berita')->with('message', 'Postingan Berhasil Diubah!');
     }
 
     public function destroy($id)
@@ -116,6 +116,7 @@ class PostController extends Controller
         }
 
         $post->delete();
-        return redirect()->route('berita.list')->with('message', 'Postingan Berhasil Dihapus!');
+        return redirect()->route('dashboard.berita
+        ')->with('message', 'Postingan Berhasil Dihapus!');
     }
 }

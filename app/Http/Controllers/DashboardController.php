@@ -19,33 +19,25 @@ class DashboardController extends Controller
         $totalPost = Post::count();
         $totalUser = User::count();
         $tutorial = base_path('/resources/markdown/tutorial.md');
-
-        if ($routeName == "dashboard.berita") {
-            return view("admin.posts.index", [
-                'total' => $totalPost,
-            ]);
-        } else {
-            return view("admin.dashboard", [
-                'totalPost' => $totalPost,
-                'totalMessage' => $totalMessage,
-                'totalUser' => $totalUser,
-                'tutorial' => Str::markdown(file_get_contents($tutorial)),
-            ]);
-        }
-        
+        return view("admin.dashboard", [
+            'totalPost' => $totalPost,
+            'totalMessage' => $totalMessage,
+            'totalUser' => $totalUser,
+            'tutorial' => Str::markdown(file_get_contents($tutorial)),
+        ]);
     }
 
     public function posts()
     {
         $posts = Post::orderBy("created_at", "desc")->paginate(10);
-        return view("admin.posts.list", [
+        return view("admin.posts.index", [
             "posts" => $posts
         ]);
     }
 
     public function view($slug)
     {
-        
+
         $post = Post::whereSlug($slug)->firstOrFail();
         return view("admin.posts.view", [
             'post' => $post
